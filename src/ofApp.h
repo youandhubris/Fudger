@@ -1,6 +1,12 @@
 #pragma once
-
 #include "ofMain.h"
+#include "fudgerMacros.h"
+#include "fudgerSettings.h"
+#include "baseLayer.h"
+#include "ofxImGui.h"
+#include "imgui.h"
+#include "imgui_internal.h"
+
 
 class ofApp : public ofBaseApp{
 
@@ -20,5 +26,19 @@ class ofApp : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
+
+		/*   SETTINGS   */
+		fudgerSettings settings;
+
+		/*   GUI   */
+		ofxImGui::Gui gui;
+
+		ImFont * font;
+
+		vector<baseLayer> layers;
+
+		int layerNameMax = 10;
 		
+		static void Spacing(glm::vec2 v, bool sameLine = false);
+		static void ShowHelpMarker(const char* desc);
 };
