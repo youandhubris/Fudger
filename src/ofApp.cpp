@@ -45,7 +45,7 @@ void ofApp::setup()
 	config.MergeMode = false;
 
 #ifdef TARGET_OSX
-	const char awesomeFile[] = "/";
+	const char awesomeFile[] = "/Users/ogo/Hubris/openFrameworks/Projects/_SharedData/fa-solid-900.ttf";
 #else
 	const char awesomeFile[] = "D:\\Hubris\\openFrameworks\\Projects\\_SharedData\\fa-solid-900.ttf";
 #endif
@@ -139,9 +139,9 @@ void ofApp::draw()
 			if (ImGui::BeginDragDropSource(ImGuiDragDropFlags_None))
 			{
 				ImGui::SetDragDropPayload("DND_DEMO_CELL", &index, sizeof(int));        // Set payload to carry the index of our item (could be anything)
-				if (mode == Mode_Insert) { ImGui::Text("Insert %s", layers[index].name); }        // Display preview (could be anything, e.g. when dragging an image we could decide to display the filename and a small preview of the image, etc.)
-				if (mode == Mode_Copy) { ImGui::Text("Copy %s", layers[index].name); }
-				if (mode == Mode_Swap) { ImGui::Text("Swap %s", layers[index].name); }
+				if (mode == Mode_Insert) { ImGui::Text("Insert %s", layers[index].name.c_str()); }        // Display preview (could be anything, e.g. when dragging an image we could decide to display the filename and a small preview of the image, etc.)
+				if (mode == Mode_Copy) { ImGui::Text("Copy %s", layers[index].name.c_str()); }
+				if (mode == Mode_Swap) { ImGui::Text("Swap %s", layers[index].name.c_str()); }
 				ImGui::EndDragDropSource();
 			}
 			if (ImGui::BeginDragDropTarget())
@@ -198,7 +198,7 @@ void ofApp::draw()
 
 		Spacing(glm::vec2(10, 0), true);
 		ImGui::SameLine();
-		ShowHelpMarker("Drag and drop to insert/copy/swap layers");
+		ShowHelpMarker("Drag and drop Layer index to insert/copy/swap layers");
 
 		ImGui::PushFont(awesomeFont);
 		ImGui::SameLine();
