@@ -202,6 +202,7 @@
     <ClInclude Include="src\baseLayer.h" />
     <ClInclude Include="src\fudgerMacros.h" />
     <ClInclude Include="src\fudgerSettings.h" />
+    <ClInclude Include="src\IconsFontAwesome5.h" />
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="..\..\Releases\OF0101\addons\ofxImGui\src\BaseEngine.h" />
     <ClInclude Include="..\..\Releases\OF0101\addons\ofxImGui\src\BaseTheme.h" />

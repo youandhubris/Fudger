@@ -33,7 +33,8 @@ class ofApp : public ofBaseApp{
 		/*   GUI   */
 		ofxImGui::Gui gui;
 
-		ImFont * font;
+		ImFont * robotoFont;
+		ImFont * awesomeFont;
 
 		vector<baseLayer> layers;
 

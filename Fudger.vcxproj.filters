@@ -146,6 +146,9 @@
     <ClInclude Include="src\baseLayer.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="src\IconsFontAwesome5.h">
+      <Filter>src</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />

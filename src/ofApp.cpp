@@ -1,6 +1,9 @@
 #include "ofApp.h"
+#include "IconsFontAwesome5.h"
 
-//--------------------------------------------------------------
+static const ImWchar icons_ranges[] = { ICON_MIN_FA, ICON_MAX_FA, 0 }; // Will not be copied by AddFont* so keep in scope.
+
+															 //--------------------------------------------------------------
 void ofApp::setup()
 {
 	/*   SETTINGS   */
@@ -19,7 +22,6 @@ void ofApp::setup()
 	ofSetWindowTitle(t);	
 
 	/*   GUI   */
-	gui.setup();
 
 	for (int i = 0; i < 5; i++)
 	{
@@ -28,8 +30,30 @@ void ofApp::setup()
 	}
 	
 	ImGuiIO &io = ImGui::GetIO();
-	const char f[] = "D:\\Hubris\\openFrameworks\\Projects\\_SharedData\\Roboto-Bold.ttf";
-	font = io.Fonts->AddFontFromFileTTF(f, 10);
+	io.Fonts->AddFontDefault();
+
+
+	
+	ImFontConfig config;
+	config.MergeMode = false;
+	config.PixelSnapH = true;
+
+
+	//const char robotoFile[] = "D:\\Hubris\\openFrameworks\\Projects\\_SharedData\\Hack-Regular.ttf";
+	//robotoFont = io.Fonts->AddFontFromFileTTF(robotoFile, 32, &config);
+
+	config.MergeMode = false;
+
+#ifdef TARGET_OSX
+	const char awesomeFile[] = "/";
+#else
+	const char awesomeFile[] = "D:\\Hubris\\openFrameworks\\Projects\\_SharedData\\fa-solid-900.ttf";
+#endif
+	
+	awesomeFont = io.Fonts->AddFontFromFileTTF(awesomeFile, 13, &config, icons_ranges);
+	//io.Fonts->Build();
+
+	gui.setup();
 
 	//io.Fonts->Build();
 
@@ -40,7 +64,7 @@ void ofApp::setup()
 //--------------------------------------------------------------
 void ofApp::update()
 {
-
+	// ImGui::GetIO().FontGlobalScale = mouseX / (float) ofGetWidth() * 10.f;
 }
 
 //--------------------------------------------------------------
@@ -176,11 +200,24 @@ void ofApp::draw()
 		ImGui::SameLine();
 		ShowHelpMarker("Drag and drop to insert/copy/swap layers");
 
-
-		ImGui::Text("Hello from default.");
-		ImGui::PushFont(font);
-		ImGui::Text("Hello with another font.");
+		ImGui::PushFont(awesomeFont);
+		ImGui::SameLine();
+		ImGui::Text(ICON_FA_ADJUST);
+		ImGui::SameLine();
+		ImGui::Text(ICON_FA_ADDRESS_CARD);
+		ImGui::SameLine();
+		ImGui::Text(ICON_FA_PLUS_SQUARE);
+		ImGui::SameLine();
+		ImGui::Text(ICON_FA_SQUARE_FULL);
+		ImGui::SameLine();
+		ImGui::Text(ICON_FA_PLUS);
 		ImGui::PopFont();
+
+
+		ImGui::Button(ICON_FA_COPY, glm::vec2(25, 25));
+
+
+
 
 
 		ImGui::Unindent();
